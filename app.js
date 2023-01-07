@@ -1,34 +1,29 @@
 import React from "react"
-import ReactDOM from "react-dom/client"
-const heading = React.createElement("h1", { id:"heading1",key: "heading1",hello:"world" }, "Rendering from parcel bundler");
-const heading2 = React.createElement("h2", { id:"heading2", key: "heading2" }, "Heading2");
-const container = React.createElement(
-  "div",
-  {
-    className: "container",
-  },
-  [heading, heading2]
-);
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(container);
+import ReactDOM, { createRoot } from "react-dom/client";
+// const heading = React.createElement("h1", { id:"heading1",key: "heading1",hello:"world" }, "Rendering from parcel bundler");
+// const heading2 = React.createElement("h2", { id:"heading2", key: "heading2" }, "Heading2");
+const name = "Veeresh";
+const Title = () => <h1 id="heading1">Namaste {name}</h1>;
 
-/**
- *  PARCEL FEATURES
-HMR (Hot Module Replacement)
-FWA (File Watcher Algorithm)
-Bundling
-Minify
-Cleaning code
-Dev and Production Build
-Super fast Build Algorithm
-Image Optimization
-Caching while development
-Compression
-Compatible with older version of browser
-HTTPS on dev
-Dynamic Port mapping
-Consistent Hashing Algorithms (To do all bundling)
-Zero Config (Other bundlers have much configuration)
-Tree Shaking - Remove unwanted
- * 
- */
+const root = createRoot(document.getElementById("root"));
+
+//Composing components
+const HeaderComponent = () => {
+  return (
+    <div>
+      <Title />
+      <h2 className="title" id="namaste">
+        Namaste React functional component
+      </h2>
+      <h2>This is heading2</h2>
+    </div>
+  );
+};
+function tick() {
+  const element = <h1>I'm a clock{new Date().toLocaleTimeString()}</h1>;
+  root.render(element);
+}
+
+// root.render(<HeaderComponent />);
+
+// setInterval(tick, 1000);
