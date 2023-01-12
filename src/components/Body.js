@@ -14,7 +14,7 @@ export default Body = () => {
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
-            const data = searchRestaurant(restaurants, searchText);
+            const data = searchRestaurant(restaurants, e.target.value);
             console.log(data);
             setRestaurantList(data);
           }}
