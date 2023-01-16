@@ -1,6 +1,5 @@
-// import { Skeleton, SkeletonTheme } from "react-loading-skeleton";
-// import ContentLoader from "react-content-loader";
-
 export default Shimmer = () => {
-  return <h2>Shimmer loading</h2>;
+  return Array(5)
+    .fill("")
+    .map((item, index) => <div className="shimmer-card" key={index}></div>);
 };

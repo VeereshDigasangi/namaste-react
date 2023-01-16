@@ -1,5 +1,6 @@
 import { useState } from "react";
 import logo from "../../assets/img/food-villa.png";
+import { Link } from "react-router-dom";
 
 const Title = () => (
   <a href="/">
@@ -15,9 +16,15 @@ export default Header = () => {
         <Title />
         <div className="nav-items">
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Contact</li>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/contact">Contact</Link>
+            </li>
             <li>Cart</li>
 
             {isLogin ? (

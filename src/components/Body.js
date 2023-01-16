@@ -2,12 +2,15 @@ import { useEffect, useState } from "react";
 import RestrauntCard from "./Restaurant";
 import Shimmer from "./Shimmer";
 import { RESTAURANT_LIST_URL } from "../common/constants";
+import { Link } from "react-router-dom";
 
 export default Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState("");
+
   useEffect(() => {
+    //API call
     restaurantList = getRestaurants();
   }, []);
   async function getRestaurants() {
@@ -16,10 +19,7 @@ export default Body = () => {
     setFilteredRestaurants(data.data?.cards[2]?.data?.data?.cards);
     setAllRestaurants(data.data?.cards[2]?.data?.data?.cards);
   }
-  console.log("render", allRestaurants);
   if (!allRestaurants) return <Shimmer />;
-  // if (!filteredRestaurants.length)
-  //   return <h1>No results matches to search text</h1>;
   return (
     <>
       <div>
@@ -46,7 +46,11 @@ export default Body = () => {
       <div className="restaurant-list">
         {filteredRestaurants.length ? (
           filteredRestaurants?.map((rest) => {
-            return <RestrauntCard {...rest.data} key={rest.data.id} />;
+            return (
+              <Link to={`/restaurant/${rest.data.id}`} key={rest.data.id}>
+                <RestrauntCard {...rest.data} key={rest.data.id} />
+              </Link>
+            );
           })
         ) : searchText ? (
           <h2>No records exist</h2>
