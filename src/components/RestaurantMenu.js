@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { CDN_URL, MENU_LIST_URL } from "../common/constants";
+import Constants from "../common/constants";
 import Shimmer from "./Shimmer";
 
 export default RestaurantMenu = () => {
@@ -11,7 +11,7 @@ export default RestaurantMenu = () => {
   }, []);
 
   async function getRestaurantInfo() {
-    const data = await fetch(MENU_LIST_URL + id);
+    const data = await fetch(Constants.MENU_LIST_URL + id);
     const restInfo = await data.json();
     setRestaurantDetails(restInfo.data);
   }
@@ -21,7 +21,7 @@ export default RestaurantMenu = () => {
       <div>
         <h1>Restaurant id: {id}</h1>
         <h2>{restaurantDetails?.name}</h2>
-        <img src={CDN_URL + restaurantDetails?.cloudinaryImageId} />
+        <img src={Constants.CDN_URL + restaurantDetails?.cloudinaryImageId} />
         <h3>Location: {restaurantDetails?.area}</h3>
         <h3>{restaurantDetails?.city}</h3>
         <h3>Rating: {restaurantDetails?.avgRating} stars</h3>

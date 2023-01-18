@@ -1,6 +1,7 @@
 import { useState } from "react";
 import logo from "../../assets/img/food-villa.png";
 import { Link } from "react-router-dom";
+import Login from "./Login";
 
 const Title = () => (
   <a href="/">
@@ -9,7 +10,7 @@ const Title = () => (
 );
 
 export default Header = () => {
-  let [isLogin, setIsLogIn] = useState(false);
+  // let [isLogin, setIsLogIn] = useState(false);
   return (
     <>
       <div className="header">
@@ -25,13 +26,26 @@ export default Header = () => {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
-            <li>Cart</li>
+            <li>
+              <Link to="/cart">Cart</Link>
+            </li>
+            <li>
+              <Link to="/login">
+                <button
+                  onClick={() => {
+                    <Login />;
+                  }}
+                >
+                  Login
+                </button>
+              </Link>
+            </li>
 
-            {isLogin ? (
+            {/* {isLogin ? (
               <button onClick={() => setIsLogIn(false)}> Logout</button>
             ) : (
               <button onClick={() => setIsLogIn(true)}> Login</button>
-            )}
+            )} */}
           </ul>
         </div>
       </div>

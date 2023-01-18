@@ -18,10 +18,15 @@
 }
 
 .card {
-  width: 200px;
+  width: 250px;
+  height: 300px;
   border: 1px solid black;
   padding: 10px;
   margin: 10px;
+
+}
+.card>h3{
+  word-break: break-all;
 }
 
 .card > img {
@@ -35,9 +40,10 @@
 
 .shimmer-card {
   background: lightgrey;
-  width: 200px;
-  height: 200px;
-  margin: 20px;
+  width: 250px;
+  height: 300px;
+  padding: 10px;
+  margin: 10px;
 }
 a {
   color: black;
@@ -46,4 +52,47 @@ a {
 
 .menu {
     display: flex;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.search-btn{
+  margin-left: 10px;
+  width: 150px; /* Increase the width of the button */
+  height: 40px; /* Increase the height of the button */
+  margin-top: 10px; /* Add space between button and fields */
+}
+
+.form-fields input,.search-input {
+  width: 300px; /* Increase the width of the fields */
+  height: 40px; /* Increase the height of the fields */
+  margin-bottom: 10px; /* Add space between fields */
+}
+.form-fields button {
+  width: 150px; /* Increase the width of the button */
+  height: 40px; /* Increase the height of the button */
+  margin-top: 10px; /* Add space between button and fields */
+}
+
+.error-text{
+  color: red;
 }

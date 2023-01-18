@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RestrauntCard from "./Restaurant";
 import Shimmer from "./Shimmer";
-import { RESTAURANT_LIST_URL } from "../common/constants";
+import Constants from "../common/constants";
 import { Link } from "react-router-dom";
 
 export default Body = () => {
@@ -14,7 +14,7 @@ export default Body = () => {
     restaurantList = getRestaurants();
   }, []);
   async function getRestaurants() {
-    let data = await fetch(RESTAURANT_LIST_URL);
+    let data = await fetch(Constants.RESTAURANT_LIST_URL);
     data = await data.json();
     setFilteredRestaurants(data.data?.cards[2]?.data?.data?.cards);
     setAllRestaurants(data.data?.cards[2]?.data?.data?.cards);
@@ -35,8 +35,11 @@ export default Body = () => {
         <button
           className="search-btn"
           onClick={() => {
+            if (!searchText) {
+              setFilteredRestaurants(allRestaurants);
+              return;
+            }
             const data = filterData(searchText, allRestaurants);
-            console.log("data", data);
             setFilteredRestaurants(data);
           }}
         >
