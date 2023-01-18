@@ -8,6 +8,8 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ErrorPage from "./components/Error";
+import Cart from "./components/Cart";
+import Login from "./components/Login";
 const AppLayout = () => {
   return (
     <>
@@ -39,10 +41,19 @@ const appRouter = createBrowserRouter([
         element: <Contact />,
       },
       {
+        path: "/cart",
+        element: <Cart />,
+      },
+
+      {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
       },
     ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
   },
 ]);
 const root = createRoot(document.getElementById("root"));
