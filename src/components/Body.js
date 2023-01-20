@@ -71,7 +71,6 @@ function filterData(searchText, restaurants) {
     const result = restaurants.filter((rest) =>
       rest.data.name.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log("result", result);
     return result;
   }
 }
