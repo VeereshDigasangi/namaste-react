@@ -10,11 +10,13 @@ const Title = () => (
 );
 
 export default Header = () => {
-  // let [isLogin, setIsLogIn] = useState(false);
   return (
     <>
       <div className="header">
         <Title />
+        <h1>
+          <i>Food Villa</i>
+        </h1>
         <div className="nav-items">
           <ul>
             <li>
