@@ -20,8 +20,12 @@ export default RestaurantMenu = () => {
     setImageUrl(Constants.CDN_URL + restInfo.data?.cloudinaryImageId);
   }
   if (restaurantDetails == {}) return <Shimmer />;
-  const handleLinkClick = (id) => {
-    setImageUrl(Constants.CDN_URL + id);
+  const handleLinkClick = (item) => {
+    // setImageUrl(Constants.CDN_URL + item.cloudinaryImageId);
+    setImageUrl(Constants.CDN_URL + item.cloudinaryImageId); //change image
+    restaurantDetails.name = item.name; //change name
+    restaurantDetails.costForTwoMsg = +item.price / 100; //because price is in paise
+    setRestaurantDetails(restaurantDetails);
   };
   return (
     <div className="menu">
@@ -39,10 +43,7 @@ export default RestaurantMenu = () => {
         <ul>
           {restaurantDetails
             ? Object.values(restaurantDetails?.menu?.items)?.map((item) => (
-                <Link
-                  key={item?.id}
-                  onClick={() => handleLinkClick(item.cloudinaryImageId)}
-                >
+                <Link key={item?.id} onClick={() => handleLinkClick(item)}>
                   <li>{item?.name}</li>
                 </Link>
               ))
