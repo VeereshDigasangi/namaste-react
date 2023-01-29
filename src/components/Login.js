@@ -29,8 +29,13 @@ export default LoginForm = () => {
         }}
       >
         {({ errors, touched, isSubmitting, status }) => (
-          <Form className="form-fields">
-            <Field name="email" type="email" placeholder="Email" />
+          <Form className="flex h-screen justify-center items-center">
+            <Field
+              className="w-64"
+              name="email"
+              type="email"
+              placeholder="Email"
+            />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
             <Field name="password" type="password" placeholder="Password" />
             {errors.password && touched.password ? (

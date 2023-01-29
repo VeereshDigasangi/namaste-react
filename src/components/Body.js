@@ -23,18 +23,18 @@ export default Body = () => {
   if (!allRestaurants) return <Shimmer />;
   return (
     <>
-      <div>
+      <div className="search-container p-5 bg-pink-50 my-5">
         <input
           type="text"
           placeholder="Search Here"
-          className="search-input"
+          className="focus: bg-green-200 p-2 m-2"
           value={searchText}
           onChange={(e) => {
             setSearchText(e.target.value);
           }}
         />
         <button
-          className="search-btn"
+          className="p-2 m-2 bg-pink-500 hover:bg-gray-500 text-white rounded-md"
           onClick={() => {
             if (!searchText) {
               setFilteredRestaurants(allRestaurants);
@@ -47,7 +47,7 @@ export default Body = () => {
           Search
         </button>
       </div>
-      <div className="restaurant-list">
+      <div className="flex flex-wrap">
         {filteredRestaurants.length ? (
           filteredRestaurants?.map((rest) => {
             return (
