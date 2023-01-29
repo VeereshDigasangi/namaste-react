@@ -3,6 +3,7 @@ import RestrauntCard from "./Restaurant";
 import Shimmer from "./Shimmer";
 import Constants from "../common/constants";
 import { Link } from "react-router-dom";
+import { filterData } from "../utils/helper";
 
 export default Body = () => {
   const [allRestaurants, setAllRestaurants] = useState([]);
@@ -65,12 +66,3 @@ export default Body = () => {
   );
 };
 
-function filterData(searchText, restaurants) {
-  if (!searchText) return restaurantList;
-  else {
-    const result = restaurants.filter((rest) =>
-      rest.data.name.toLowerCase().includes(searchText.toLowerCase())
-    );
-    return result;
-  }
-}

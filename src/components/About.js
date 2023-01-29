@@ -1,7 +1,7 @@
 // import { Outlet } from "react-router-dom";
 import { Component } from "react";
 import Profile from "./Profile";
-import ProfileClass from "./ProfileClass";
+// import ProfileClass from "./ProfileClass";
 // export default About = () => {
 //   return (
 //     <div>
@@ -25,9 +25,9 @@ export default class About extends Component {
     return (
       <div>
         <h1>About Us</h1>
-        {/* <Profile name={"Veeresh Function"} /> */}
-        <ProfileClass name={"Veeresh Class"} />
-        <ProfileClass name={"Veeresh Second Child Class"} />
+        <Profile name={"Veeresh Function"} />
+        {/* <ProfileClass name={"Veeresh Class"} />
+        <ProfileClass name={"Veeresh Second Child Class"} /> */}
       </div>
     );
   }

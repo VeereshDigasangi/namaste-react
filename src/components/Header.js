@@ -2,6 +2,7 @@ import { useState } from "react";
 import logo from "../../assets/img/food-villa.png";
 import { Link } from "react-router-dom";
 import Login from "./Login";
+import useOnline from "../utils/useOnline";
 
 const Title = () => (
   <a href="/">
@@ -10,6 +11,7 @@ const Title = () => (
 );
 
 export default Header = () => {
+  const isOnline = useOnline();
   return (
     <>
       <div className="header">
@@ -32,6 +34,9 @@ export default Header = () => {
               <Link to="/cart">Cart</Link>
             </li>
             <li>
+              <Link to="/instamart">Instamart</Link>
+            </li>
+            <li>
               <Link to="/login">
                 <button
                   onClick={() => {
@@ -42,7 +47,8 @@ export default Header = () => {
                 </button>
               </Link>
             </li>
-
+            {isOnline}
+            <h1>{isOnline ? "✅" : "🔴"}</h1>
             {/* {isLogin ? (
               <button onClick={() => setIsLogIn(false)}> Logout</button>
             ) : (
