@@ -6,7 +6,7 @@ import useOnline from "../utils/useOnline";
 
 const Title = () => (
   <a href="/">
-    <img alt="logo" className="logo" src={logo}></img>
+    <img alt="logo" className="h-28 p-2" src={logo}></img>
   </a>
 );
 
@@ -14,29 +14,29 @@ export default Header = () => {
   const isOnline = useOnline();
   return (
     <>
-      <div className="header">
+      <div className="flex justify-between bg-pink-50 shadow-lg sm: bg-blue-50 md: bg-yellow-50 ">
         <Title />
-        <h1>
+        <h1 className="px-2 py-12 font-bold text-xl">
           <i>Food Villa</i>
         </h1>
-        <div className="nav-items">
-          <ul>
-            <li>
+        <div>
+          <ul className="flex py-10">
+            <li className="px-2">
               <Link to="/">Home</Link>
             </li>
-            <li>
+            <li className="px-2">
               <Link to="/about">About</Link>
             </li>
-            <li>
+            <li className="px-2">
               <Link to="/contact">Contact</Link>
             </li>
-            <li>
+            <li className="px-2">
               <Link to="/cart">Cart</Link>
             </li>
-            <li>
+            <li className="px-2">
               <Link to="/instamart">Instamart</Link>
             </li>
-            <li>
+            <li className="px-2">
               <Link to="/login">
                 <button
                   onClick={() => {
