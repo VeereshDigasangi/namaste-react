@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,7 +9,6 @@ import {
   createHashRouter,
   createBrowserRouter,
 } from "react-router-dom";
-import About from "./components/About";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ErrorPage from "./components/Error";
@@ -17,6 +16,12 @@ import Cart from "./components/Cart";
 import Login from "./components/Login";
 import Profile from "./components/Profile";
 import ProfileClass from "./components/ProfileClass";
+import Instamart from "./components/Instamart";
+import { lazy } from "react";
+import Shimmer from "./components/Shimmer";
+
+const About = lazy(() => import("./components/About"));
+
 const AppLayout = () => {
   return (
     <>
@@ -37,7 +42,11 @@ const appRouter = createBrowserRouter([
     children: [
       {
         path: "about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <About />,
+          </Suspense>
+        ),
         children: [
           {
             path: "profile",
@@ -67,6 +76,14 @@ const appRouter = createBrowserRouter([
   {
     path: "login",
     element: <Login />,
+  },
+  {
+    path: "instamart",
+    element: (
+      <Suspense fallback={<Shimmer />}>
+        <Instamart />,
+      </Suspense>
+    ),
   },
 ]);
 const root = createRoot(document.getElementById("root"));
