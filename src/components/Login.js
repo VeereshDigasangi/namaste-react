@@ -1,31 +1,31 @@
 import { useNavigate } from "react-router-dom";
 import { Formik, Form, Field } from "formik";
 import Constants from "../common/constants";
-import { useState } from "react";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 export default LoginForm = () => {
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState("false");
-  console.log("isLogin inti ", isLogin);
+  const { setUser } = useContext(UserContext);
   return (
     <div className="form-container">
       <Formik
         initialValues={{ email: "", password: "" }}
         onSubmit={(values, { setSubmitting, setStatus }) => {
-          setTimeout(() => {
-            if (
-              values.email == Constants.USER_NAME &&
-              values.password === Constants.PASSWORD
-            ) {
-              setIsLogin("true");
-              console.log("isLogin ", isLogin);
-              navigate("/");
-            } else {
-              setStatus("Invalid email address or password");
-              setSubmitting(false);
-              return;
-            }
-          }, 2000);
+          if (
+            values.email == Constants.USER_NAME &&
+            values.password === Constants.PASSWORD
+          ) {
+            setUser({
+              name: values.email,
+              email: values.email, //there is no email to set
+            });
+            navigate("/");
+          } else {
+            setStatus("Invalid user name address or password");
+            setSubmitting(false);
+            return;
+          }
         }}
       >
         {({ errors, touched, isSubmitting, status }) => (
@@ -34,7 +34,7 @@ export default LoginForm = () => {
               className="w-64"
               name="email"
               type="email"
-              placeholder="Email"
+              placeholder="User email"
             />
             {errors.email && touched.email ? <div>{errors.email}</div> : null}
             <Field name="password" type="password" placeholder="Password" />

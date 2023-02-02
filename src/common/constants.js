@@ -4,7 +4,7 @@ const Constants = {
   RESTAURANT_LIST_URL:
     "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING",
   MENU_LIST_URL: "https://www.swiggy.com/dapi/menu/v4/full?menuId=",
-  USER_NAME: "test@gmail.com",
+  USER_NAME: "vsd@gmail.com",
   PASSWORD: "123",
 };
 
