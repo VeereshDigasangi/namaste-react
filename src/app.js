@@ -1,14 +1,9 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useState } from "react";
 import { createRoot } from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
-import {
-  RouterProvider,
-  Outlet,
-  createHashRouter,
-  createBrowserRouter,
-} from "react-router-dom";
+import { RouterProvider, Outlet, createBrowserRouter } from "react-router-dom";
 import Contact from "./components/Contact";
 import RestaurantMenu from "./components/RestaurantMenu";
 import ErrorPage from "./components/Error";
@@ -19,17 +14,22 @@ import ProfileClass from "./components/ProfileClass";
 import Instamart from "./components/Instamart";
 import { lazy } from "react";
 import Shimmer from "./components/Shimmer";
+import UserContext from "./utils/UserContext";
 
 const About = lazy(() => import("./components/About"));
 
 const AppLayout = () => {
+  const [user, setUser] = useState({
+    name: "",
+    email: "",
+  });
   return (
-    <>
+    <UserContext.Provider value={{ user: user, setUser: setUser }}>
       <Header />
       {/* Outlet used to make dynamic client side routing */}
       <Outlet />
       <Footer />
-    </>
+    </UserContext.Provider>
   );
 };
 
@@ -71,19 +71,19 @@ const appRouter = createBrowserRouter([
         path: "restaurant/:id",
         element: <RestaurantMenu />,
       },
+      {
+        path: "instamart",
+        element: (
+          <Suspense fallback={<Shimmer />}>
+            <Instamart />
+          </Suspense>
+        ),
+      },
+      {
+        path: "login",
+        element: <Login />,
+      },
     ],
-  },
-  {
-    path: "login",
-    element: <Login />,
-  },
-  {
-    path: "instamart",
-    element: (
-      <Suspense fallback={<Shimmer />}>
-        <Instamart />,
-      </Suspense>
-    ),
   },
 ]);
 const root = createRoot(document.getElementById("root"));
