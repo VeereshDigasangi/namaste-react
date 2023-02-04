@@ -9,14 +9,13 @@ import RestaurantMenu from "./components/RestaurantMenu";
 import ErrorPage from "./components/Error";
 import Cart from "./components/Cart";
 import Login from "./components/Login";
-import Profile from "./components/Profile";
 import ProfileClass from "./components/ProfileClass";
-import Instamart from "./components/Instamart";
 import { lazy } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 
 const About = lazy(() => import("./components/About"));
+const Instamart = lazy(() => import("./components/Instamart"));
 
 const AppLayout = () => {
   const [user, setUser] = useState({
