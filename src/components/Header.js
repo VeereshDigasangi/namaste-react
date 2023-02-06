@@ -35,7 +35,7 @@ export default Header = () => {
               <Link to="/contact">Contact</Link>
             </li>
             <li className="px-2">
-              <Link to="/cart">Cart {cartItems.length}</Link>
+              <Link to="/cart">Cart {Object.keys(cartItems).length}</Link>
             </li>
             <li className="px-2">
               <Link to="/instamart">Instamart</Link>
