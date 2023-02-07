@@ -13,6 +13,8 @@ import ProfileClass from "./components/ProfileClass";
 import { lazy } from "react";
 import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import store from "./utils/store";
 
 const About = lazy(() => import("./components/About"));
 const Instamart = lazy(() => import("./components/Instamart"));
@@ -23,12 +25,14 @@ const AppLayout = () => {
     email: "",
   });
   return (
-    <UserContext.Provider value={{ user: user, setUser: setUser }}>
-      <Header />
-      {/* Outlet used to make dynamic client side routing */}
-      <Outlet />
-      <Footer />
-    </UserContext.Provider>
+    <Provider store={store}>
+      <UserContext.Provider value={{ user: user, setUser: setUser }}>
+        <Header />
+        {/* Outlet used to make dynamic client side routing */}
+        <Outlet />
+        <Footer />
+      </UserContext.Provider>
+    </Provider>
   );
 };
 
