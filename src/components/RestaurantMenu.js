@@ -32,7 +32,7 @@ export default RestaurantMenu = () => {
                 <li key={item.id}>
                   {item?.name}
                   <button
-                    className="bg-green-100 p-2"
+                    className="bg-green-100 p-2 m-2 hover:bg-blue-300 font-bold py-2 px-4 rounded transition duration-500 ease-in-out"
                     onClick={() => handleAddItems(item)}
                   >
                     Add Item
